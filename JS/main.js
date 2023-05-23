@@ -16,15 +16,15 @@ function playRound(computerSelection, playerSelection) {
     if(computerSelection === playerSelection){
         returnText = `It was a draw you both chose ${playerSelection}!`;
         winStatus = "draw";
-        return[returnText, winStatus]
+        return[returnText, winStatus];
     } else if (winningPairDict[playerSelection] === computerSelection) {
         returnText = `You win! ${playerSelection} beats ${computerSelection}!`;
         winStatus = "win";
-        return[returnText, winStatus]
+        return[returnText, winStatus];
     } else {
         returnText = `You lose! ${computerSelection} beats ${playerSelection}!`;
         winStatus = "lose";
-        return[returnText, winStatus]
+        return[returnText, winStatus];
     };   
 };
 
@@ -52,4 +52,4 @@ function game() {
     };
 };
 
-game()
+game();
