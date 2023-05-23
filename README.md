@@ -1,2 +1,2 @@
 # rock-paper-scissors
-Rock paper scissors website for The Odin Project
+A basic Rock paper scissors website as part of The Odin Project
