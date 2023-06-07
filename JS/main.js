@@ -28,28 +28,35 @@ function playRound(computerSelection, playerSelection) {
     };   
 };
 
-function game() {
-    playerScore = 0;
-    computerScore = 0;
-    for (let index = 0; index < 5; index++) {
-        let playerSelection = prompt("Please enter Rock, Paper or Scissors", "paper");
-        let resultList = playRound(getComputerChoice(), playerSelection);
-        console.log(resultList[0]);
-        if (resultList[1] === "win"){
+playerScore = 0;
+computerScore = 0;
+const btnChoice = document.querySelectorAll(".choiceButton");
+btnChoice.forEach((btnElement) => {
+    btnElement.addEventListener("click", () => {
+        let playerChoice = btnElement.dataset.choice;
+        let resultsList = playRound(getComputerChoice(), playerChoice);
+        document.querySelector("#current-result").innerText = resultsList[0];
+        
+        if (resultsList[1] === "win"){
             playerScore++;
-        }else if (resultList[1] === "lose"){
+        }else if (resultsList[1] === "lose"){
             computerScore++;
         };
-        console.log(`player:${playerScore} pc:${computerScore}`)
-        if ((Math.abs(playerScore-computerScore)) > 5-index-1) {
-            break;
-        };  
-    };
-    if (playerScore > computerScore) {
-        console.log(`You won! the score was ${playerScore}:${computerScore}`);
-    } else {
-        console.log(`You lost! the score was ${computerScore}:${playerScore}`);
-    };
-};
+        document.querySelector("#score-data").innerText = `${playerScore} - ${computerScore}`;
+        
+        if (playerScore === 5){
+            alert(`You won! the score was ${playerScore}:${computerScore}`);
+            resetGame();
+        } else if (computerScore === 5){
+            alert(`You lost! the score was ${computerScore}:${playerScore}`);
+            resetGame();
+        };
+    });
+});
 
-game();
+function resetGame(){
+    playerScore = 0;
+    computerScore = 0;
+    document.querySelector("#score-data").innerText = "0 - 0";
+    document.querySelector("#current-result").innerText = "";
+};
