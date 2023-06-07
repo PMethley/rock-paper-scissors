@@ -53,11 +53,21 @@ function playRound(computerSelection, playerSelection) {
     };   
 };
 
+const modal = document.getElementById("myModal");
+const endingText = document.getElementById("final-score");
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        resetGame();
+    };
+};
+
 playerScore = 0;
 computerScore = 0;
 const playerScoreElement = document.querySelector("#player-score");
 const computerScoreElement = document.querySelector("#computer-score");
 const btnChoice = document.querySelectorAll(".choice-button");
+
 btnChoice.forEach((btnElement) => {
     btnElement.addEventListener("click", () => {
         let playerChoice = btnElement.dataset.choice;
@@ -87,10 +97,14 @@ btnChoice.forEach((btnElement) => {
         };
         
         if (playerScore === 5){
-            alert(`You won! the score was ${playerScore}:${computerScore}`);
-            resetGame();
+            modal.style.display = "block";
+            endingText.innerText = (`You won! the score was ${playerScore}:${computerScore}`);
+            // alert(`You won! the score was ${playerScore}:${computerScore}`);
+            // resetGame();
         } else if (computerScore === 5){
-            alert(`You lost! the score was ${playerScore}:${computerScore}`);
+            modal.style.display = "block";
+            endingText.innerText = (`You won! the score was ${playerScore}:${computerScore}`);
+            // alert(`You lost! the score was ${playerScore}:${computerScore}`);
             resetGame();
         };
     });
@@ -109,6 +123,7 @@ function animateScore(roundWinnerElement){
 };
 
 function resetGame(){
+    modal.style.display = "none";
     playerScore = 0;
     computerScore = 0;
     playerScoreElement.innerText = 0;
@@ -118,4 +133,7 @@ function resetGame(){
     document.querySelector("#current-result").innerText = "";
     playerScoreElement.style.color = "black";
     computerScoreElement.style.color = "black";
+    userChoiceImg.style.opacity = "0";
+    computerChoiceImg.style.opacity = "0";
 };
+document.getElementById("play-again").addEventListener("click",resetGame);
