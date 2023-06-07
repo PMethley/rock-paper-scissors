@@ -8,16 +8,35 @@
     <script src="/JS/main.js" defer></script>    
 </head>
 <body>
-    
-    <button class="choiceButton" data-choice="rock">Rock</button>
-    <button class="choiceButton" data-choice="paper">Paper</button>
-    <button class="choiceButton" data-choice="scissors">Scissors</button>
-    <span id="current-result"></span>
+    <div class="header-bar">
+        <h2>Rock, Paper, Scissors</h2>
+    </div>
     <div class="scores">
         <span>Player</span>
-        <span id="score-data">0 - 0</span>
+        <div class="player-div">
+            <span id="player-score">0</span>
+            <span id="player-score-ani">0</span>        
+        </div>
+        <span id="score-dash"> - </span>
+        <div class="computer-div">
+            <span id="computer-score">0</span>
+            <span id="computer-score-ani">0</span>
+        </div>
         <span>Computer</span>
     </div>
+    <div class="choices-container">
+        <button class="choice-button" data-choice="rock"><img src="images/rock.png"></button>
+        <button class="choice-button" data-choice="paper"><img src="images/paper.png"></button>
+        <button class="choice-button" data-choice="scissors"><img src="images/scissors.png"></button>
+    </div>
+    <span id="current-result"></span>
+    <div class="round-showcase">
+        <img id="user-choice-photo" src="">
+        <img id="computer-choice-photo" src="">
+    </div>
+    <footer>
+        <span>Made by Philip Methley</span>
+    </footer>
     
 </body>
 </html>
