@@ -50,7 +50,7 @@ function playRound(computerSelection, playerSelection) {
         choicePhotoAnimation(playerSelection, computerSelection);
         computerChoiceImg.style.opacity = "1";
         return[returnText, winStatus];
-    };   
+    };
 };
 
 const modal = document.getElementById("myModal");
@@ -72,11 +72,11 @@ btnChoice.forEach((btnElement) => {
     btnElement.addEventListener("click", () => {
         let playerChoice = btnElement.dataset.choice;
         let resultsList = playRound(getComputerChoice(), playerChoice);
-        
+
         document.querySelector("#current-result").innerText = resultsList[0];
         const roundResultAni = [{transform: "scale(1)"},{transform: "scale(1.2)"},{transform: "scale(1)"}]
         document.querySelector("#current-result").animate(roundResultAni, 200, 1)
-        
+
         if (resultsList[1] === "win"){
             playerScore++;
             animateScore(playerScoreElement);
@@ -95,7 +95,7 @@ btnChoice.forEach((btnElement) => {
             playerScoreElement.style.color = "black";
             computerScoreElement.style.color = "black";
         };
-        
+
         if (playerScore === 5){
             modal.style.display = "block";
             endingText.innerText = (`You won! the score was ${playerScore}:${computerScore}`);
@@ -118,8 +118,8 @@ function animateScore(roundWinnerElement){
     const roundWinnerElementAni = document.querySelector(roundWinnerAniId);
     roundWinnerElement.innerText++;
     roundWinnerElementAni.innerText = roundWinnerElement.innerText-1;
-    roundWinnerElement.animate(newNumAni, 150, 1);
-    roundWinnerElementAni.animate(oldNumAni, 150, 1);
+    roundWinnerElement.animate(newNumAni, 10000, 1);
+    roundWinnerElementAni.animate(oldNumAni, 10000, 1);
 };
 
 function resetGame(){
